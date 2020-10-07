@@ -9,3 +9,16 @@
   background-color: #159957;
   background-image: linear-gradient(120deg, #155799, #159957);
 }
+
+.navigation-content {
+	max-width: 64rem; 
+	margin: 0 auto; 
+}
+
+// Large devices (desktops, 992px and up) - pair with navbar-expand-lg
+@media (max-width: 992px) {
+	.navigation-content .list-group-horizontal .nav-link {
+		padding: .5rem 1rem;
+	}
+}
+
