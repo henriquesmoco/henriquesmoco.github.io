@@ -2,6 +2,7 @@
 layout: default
 title: About
 permalink: /about/
+menu: About
 ---
 
 Welcome! I am one of those geeks that loves IT (well, I have a tech blog hosted on GitHub so this cat should be out of the bag by now ;)

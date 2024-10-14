@@ -3,6 +3,7 @@
 # To modify the layout, see https://jekyllrb.com/docs/themes/#overriding-theme-defaults
 
 layout: default
+menu: Home
 ---
 
 <section class="posts">
@@ -14,7 +15,7 @@ layout: default
       <p class="post-description">
         {{ post.excerpt | strip_html | strip }}
       </p>
-      
+
       <span class="post-info">
         <i class="fa fa-calendar" aria-hidden="true"></i> {{ post.date | date: "%Y/%m/%d" }}
       </span>

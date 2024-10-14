@@ -7,12 +7,11 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <!-- Pages -->
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item {% if page.url == '/' %} active {% endif %}">
-        <a class="nav-link" href="/">Home</a>
+      {% for nav in site.navigation %}
+      <li class="nav-item {% if page.menu == nav.label %}active {% endif %}">
+        <a class="nav-link" href="{{ site.url }}{{ nav.href }}">{{ nav.label }}</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link {% if page.url == '/about/') %} active {% endif %}" href="/about">About</a>
-      </li>
+      {% endfor %}
     </ul>
 
     <!-- buttons -->
