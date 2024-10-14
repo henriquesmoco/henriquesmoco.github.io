@@ -9,13 +9,23 @@ layout: default
   {% for post in site.posts %}
     <article class="post">
 
-      <h1><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h1>
+      <h3><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h3>
 
-      <div class="entry">
-        {{ post.excerpt }}
-      </div>
+      <p class="post-description">
+        {{ post.excerpt | strip_html | strip }}
+      </p>
+      
+      <span class="post-info">
+        <i class="fa fa-calendar" aria-hidden="true"></i> {{ post.date | date: "%Y/%m/%d" }}
+      </span>
 
-      <a href="{{ site.baseurl }}{{ post.url }}" class="read-more">Read More</a>
+      {% for cat in post.categories %}
+      <span class="post-info">
+        <i class="fa fa-folder-o" aria-hidden="true"></i>
+        <a href="{{ site.url }}/categories/#{{ cat }}" title="{{ cat }}">{{ cat }}</a>
+      </span>
+      {% endfor %}
+
     </article>
   {% endfor %}
 </section>
