@@ -1,0 +1,19 @@
+<h4>Categories</h4>
+<div id="categories-nav">
+  <ul class="list-group">
+    {% assign sorted_categories = site.categories | sort %}
+    {% for category in sorted_categories %}
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+    <a href="#{{ category[0] }}">{{ category | first }}</a>
+    <span class="badge badge-pill badge-success">{{ category[1].size }}</span>
+    </li>
+    {% endfor %}
+  </ul>
+</div>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $("#categories-nav li").css('text-transform','capitalize')
+  });
+
+</script>

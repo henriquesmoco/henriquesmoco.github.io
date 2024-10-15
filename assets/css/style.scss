@@ -3,6 +3,10 @@
 
 @import "{{ site.theme }}";
 
+// Theme Override
+@media screen and (min-width: 80em) { .main-content { max-width: 80rem; padding: 2rem 3rem; margin: 0 auto; font-size: 1.1rem; } }
+// End override
+
 .navigation-header {
   color: #fff;
   text-align: center;
@@ -11,7 +15,7 @@
 }
 
 .navigation-content {
-	max-width: 64rem; 
+	max-width: 80rem; 
 	margin: 0 auto; 
 }
 

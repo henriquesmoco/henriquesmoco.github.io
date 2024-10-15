@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: categories
 title: Categories
 description: List my posts by category
 keywords: Categories
