@@ -1,0 +1,127 @@
+---
+# Feel free to add content and custom Front Matter to this file.
+# To modify the layout, see https://jekyllrb.com/docs/themes/#overriding-theme-defaults
+
+layout: home
+menu: Home
+---
+
+<section class="posts">
+  {% for post in paginator.posts %}
+    <article class="post-entry pt-3 pb-3">
+
+      <h3><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h3>
+
+      <p class="post-description">
+        {{ post.excerpt | strip_html | strip }}
+      </p>
+
+      <span class="post-info">
+        <i class="fa fa-calendar" aria-hidden="true"></i> {{ post.date | date: "%Y/%m/%d" }}
+      </span>
+
+      {% for cat in post.categories %}
+      <span class="post-info">
+        <i class="fa fa-folder-o" aria-hidden="true"></i>
+        <a href="{{ site.url }}/categories/#{{ cat }}" title="{{ cat }}">{{ cat }}</a>
+      </span>
+      {% endfor %}
+
+    </article>
+  {% endfor %}
+
+  <nav aria-label="pagination" class="mt-5">
+    <ul class="pagination">
+      <!-- Previous Button Logic -->
+    {% if paginator.previous_page %}
+      {% if paginator.previous_page == 1 %}
+          <li class="page-item">
+            <a class="page-link" href="{{ site.url }}/">Previous</a>
+          </li>
+      {% else %}
+          <li class="page-item">
+            <a class="page-link" href="{{ site.url }}/page{{paginator.previous_page}}">Previous</a>
+          </li>
+      {% endif %}
+    {% else %}
+      <li class="page-item disabled">
+        <span class="page-link">Previous</span>
+      </li>
+    {% endif %}
+
+    <!-- First Page Button Logic -->
+    {% if paginator.page == 1 %}
+      <li class="page-item active" aria-current="page">
+        <span class="page-link">1</span>
+      </li>
+    {% else %}
+        <li class="page-item">
+          <a class="page-link" href="{{ site.url }}/">1</a>
+        </li>
+    {% endif %}
+
+    <!-- Previous ... Button Logic -->
+    {% assign aroundSize = 2 %}
+    {% assign midStartPage = paginator.page | minus: aroundSize %}
+    {% if 2 > midStartPage %}
+        {% assign midStartPage = 2 %}
+    {% endif %}
+    {% assign midEndPage = paginator.page | plus: aroundSize %}
+    {% if midEndPage >= paginator.total_pages %}
+        {% assign midEndPage = paginator.total_pages | minus:1 %}
+    {% endif %}
+    {% assign tmpPage = aroundSize | plus: 2 %}
+    {% if paginator.page > tmpPage %}
+      <li class="page-item disabled">
+        <span class="page-link">...</span>
+      </li>
+    {% endif %}
+
+    <!-- Pages Button Logic -->
+    {% for count in (midStartPage..midEndPage) %}
+      {% if count == paginator.page %}
+        <li class="page-item active" aria-current="page">
+          <span class="page-link">{{count}}</span>
+        </li>
+      {% else %}
+        <li class="page-item">
+          <a class="page-link" href="{{ site.url }}/page{{count}}">{{count}}</a>
+        </li>
+      {% endif %}
+    {% endfor %}
+
+    <!-- Next ... Button Logic -->
+    {% assign tmpPage = paginator.page | plus: aroundSize | plus: 1 %}
+    {% if paginator.total_pages > tmpPage %}
+      <li class="page-item disabled">
+        <span class="page-link">...</span>
+      </li>
+    {% endif %}
+
+    <!-- Last Page Button Logic -->
+    {% if paginator.total_pages > 1 %}
+      {% if paginator.page == paginator.total_pages %}
+          <li class="page-item active" aria-current="page">
+            <span class="page-link">{{paginator.total_pages}}</span>
+          </li>
+      {% else %}
+          <li class="page-item">
+            <a class="page-link" href="{{ site.url }}/page{{paginator.total_pages}}">{{paginator.total_pages}}</a>
+          </li>
+      {% endif %}
+    {% endif %}
+
+    <!-- Next Page Button Logic -->
+    {% if paginator.next_page %}
+        <li class="page-item">
+          <a class="page-link" href="{{ site.url }}/page{{paginator.next_page}}">Next</a>
+        </li>
+    {% else %}
+        <li class="page-item disabled">
+          <span class="page-link">Next</span>
+        </li>
+    {% endif %}
+    </ul>
+  </nav>
+
+</section>
