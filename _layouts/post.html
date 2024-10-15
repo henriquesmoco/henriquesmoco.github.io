@@ -1,0 +1,28 @@
+---
+layout: default
+---
+
+<article>
+    <section class="pb-3 mb-4 border-bottom">
+        <h3>{{ page.title}}</h3>
+
+        <span class="post-info">
+            <i class="fa fa-calendar" aria-hidden="true"></i> {{ page.date | date: "%Y/%m/%d" }}
+          </span>
+    
+          {% for cat in page.categories %}
+          <span class="post-info">
+            <i class="fa fa-folder-o" aria-hidden="true"></i>
+            <a href="{{ site.url }}/categories/#{{ cat }}" title="{{ cat }}">{{ cat }}</a>
+          </span>
+          {% endfor %}
+
+          <span class="post-info">
+            <i class="fa fa-clock-o" aria-hidden="true"></i>
+            {{ page.content | strip_html | strip_newlines | remove: " " | size | divided_by: 350 | plus: 1 }} minutes
+          </span>
+    </section>
+
+    {{ content }}
+
+</article>
