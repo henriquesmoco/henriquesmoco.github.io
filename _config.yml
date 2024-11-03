@@ -27,6 +27,11 @@ source_url: https://github.com/henriquesmoco/henriquesmoco.github.io
 
 paginate: 10
 
+# Search
+simple_jekyll_search:
+    fulltext: true
+    limit: 10
+
 # Build settings
 markdown: kramdown
 theme: jekyll-theme-cayman
