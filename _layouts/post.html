@@ -6,18 +6,18 @@ layout: default
     <section class="pb-3 mb-4 border-bottom">
         <h1>{{ page.title}}</h1>
 
-        <span class="post-info">
+        <span class="post-info text-nowrap">
             <i class="fa fa-calendar" aria-hidden="true"></i> {{ page.date | date: "%Y/%m/%d" }}
           </span>
     
           {% for cat in page.categories %}
-          <span class="post-info">
+          <span class="post-info text-nowrap">
             <i class="fa fa-folder-o" aria-hidden="true"></i>
             <a href="{{ site.url }}/categories/#{{ cat }}" title="{{ cat }}">{{ cat }}</a>
           </span>
           {% endfor %}
 
-          <span class="post-info">
+          <span class="post-info text-nowrap">
             <i class="fa fa-clock-o" aria-hidden="true"></i>
             {{ page.content | strip_html | number_of_words | divided_by: 180 | plus: 1 }} minutes
           </span>
