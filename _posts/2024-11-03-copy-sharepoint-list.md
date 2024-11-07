@@ -16,9 +16,12 @@ This post is about copying a SharePoint list from `QA` to `Production` for Power
 This command is good when you have lots of lists to copy and do't want to select one by one. Keep in mind that the command will also copy all document libraries as well, but if there's nothing to update nothing will happen.
 You can always edit the XML before applying the template to remove a document library, list or security setting you don't want to copy.
 
-<div class="alert alert-warning" role="alert">
-<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> If the list has unique permissions, those will be copied as well.
-</div>
+{% capture message1 %}
+If the list has unique permissions, those will be copied as well.
+{% endcapture %}
+
+{% include message-alert.html content=message1 %}
+
 
 ``` powershell
 # Connect to source site and get the template for all lists and document libraries
