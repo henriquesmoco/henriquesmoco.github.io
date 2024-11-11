@@ -1,0 +1,36 @@
+
+<script type="text/javascript">
+    function copyText(codeSection, copyButton, copyButtonIcon) {
+        window.navigator.clipboard.writeText(codeSection.innerText);
+        copyButton.classList.add("text-success");
+        copyButtonIcon.classList.remove("fa-copy");
+        copyButtonIcon.classList.add("fa-check");
+  
+        setTimeout(() => {        
+            copyButton.classList.remove("text-success");
+            copyButtonIcon.classList.remove("fa-check");
+            copyButtonIcon.classList.add("fa-copy");
+        }, 1500);
+    }
+  
+    function createCopyButton(codeSection) {
+        const copyButtonIcon = document.createElement("i");
+        copyButtonIcon.classList.add("fa", "fa-copy");
+  
+        const copyButton = document.createElement("button");
+        copyButton.classList.add("btn", "btn-sm", "position-absolute", "top-0", "end-0", "p-1", "mt-1", "me-1", "bg-light");
+        copyButton.setAttribute('type', 'button');
+        copyButton.onclick =  () => copyText(codeSection, copyButton, copyButtonIcon);
+        copyButton.appendChild(copyButtonIcon);
+  
+        codeSection.classList.add("position-relative");
+        codeSection.appendChild(copyButton);
+    }
+  
+    $(document).ready(function() {
+        //create copy button on markdwon code section
+        document.querySelectorAll("div.highlighter-rouge").forEach(createCopyButton);
+        //Create copy button on rouge code section
+        document.querySelectorAll("figure.highlight").forEach(createCopyButton);
+    });
+  </script>
