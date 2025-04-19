@@ -38,6 +38,7 @@ theme: jekyll-theme-cayman
 plugins:
   - jekyll-feed
   - jekyll-paginate
+  - jemoji
 
 navigation:
   - href: /
