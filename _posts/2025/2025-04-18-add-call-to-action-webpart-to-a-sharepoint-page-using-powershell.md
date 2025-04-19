@@ -20,7 +20,7 @@ $page.Controls[1].PropertiesJson #The 1 here is the control index in your page
 ```
 
 ### Complete JSON Properties
-Below is a comple JSON properties sample for the `Call to Action` WebPart. In the next section we will create an object that matches this schema and then convert it to JSON.  
+Below is a complete JSON properties sample for the `Call to Action` WebPart. In the next section we will create an object that matches this schema and then convert it to JSON.  
 Note the `focalPosition` property is optional, it is used to set the focal point of the image.
 
 ``` json
