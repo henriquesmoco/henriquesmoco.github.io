@@ -94,25 +94,6 @@ Add-PnPPageSection -Page My-WebPart-Page -SectionTemplate OneColumn
 Add-PnPPageWebPart -Page My-WebPart-Page -DefaultWebPartType CallToAction -WebPartProperties $webpartJson -Section 2 -Column 1
 ```
 
-## Updating an existing Call to Action
-This unfortunatelly doesn't work :cry:. I tried three different ways and the WebPart doesn't update.  
-The solution is to `delete` the existing WebPart and `add` a new updated WebPart.
-
-``` powershell
-#Delete the WebPart
-$page = Get-PnPPage My-WebPart-Page
-$page.Controls[1].Delete()
-$page.Save()
-```
-
-Or if you want to get fancy, the following will find a Call to Action control with an Overlay Text `My Action` and then delete it. To find a control that has a button text of `MyBtn` instead use `"button\.label".*>MyBtn`. 
-``` powershell
-$page = Get-PnPPage My-WebPart-Page
-$control = $page.Controls.Find({ param($item) $item.Title -eq "Call to action" -and $item.HtmlPropertiesData -match '"overlayText\.text".*>My Action' })
-$control.Delete()
-$page.Save()
-```
-
 ## Other Links
 - [PowerShell PNP GitHub](https://github.com/pnp/powershell)
 - [Add-PnPPageWebPart cmdlet](https://pnp.github.io/powershell/cmdlets/Add-PnPPageWebPart.html)
